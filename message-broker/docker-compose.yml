@@ -2,4 +2,4 @@ version: "3.9"
 
 include:
   - ../common.docker-compose.yml
-  - ./authorization-server.docker-compose.yml
+  - ./message-broker.docker-compose.yml

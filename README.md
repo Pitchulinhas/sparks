@@ -4,7 +4,8 @@ E-commerce application.
 
 ## Requirements
 
-- Meet **authorization-server** requirements
+- Meet **authorization-server** requirements;
+- Meet **message-broker** requirements.
 
 ## Start
 
