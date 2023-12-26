@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: sparks-authorization-server-app
+    image: sparks/authorization-server-app:latest
+    environment:
+      - KEYCLOAK_ADMIN=${APP_ADMIN_USER}
+      - KEYCLOAK_ADMIN_PASSWORD=${APP_ADMIN_PASS}
+      - KC_DB=${APP_DB_TYPE}
+      - KC_DB_URL=${APP_DB_URL}
+      - KC_DB_USERNAME=${APP_DB_USER}
+      - KC_DB_PASSWORD=${APP_DB_PASS}
+      - KC_HOSTNAME=${APP_HOSTNAME}
+      - KC_HOSTNAME_PORT=${APP_EXTERNAL_PORT}
+    command: start --optimized
+    depends_on:
+      - db
+    volumes:
+      - app-data:/opt/keycloak/data/
+    ports:
+      - ${APP_EXTERNAL_PORT}:8443
+    networks:
+      sparks-network:
+        aliases:
+          - authorization-server-app
+      authorization-server-network:
+        aliases:
+          - app
+  db:
+    container_name: sparks-authorization-server-db
+    image: sparks/authorization-server-db:latest
+    environment:
+      - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
+      - APP_DB_NAME=${DB_APP_DB_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - ${DB_EXTERNAL_PORT}:5432
+    networks:
+      - authorization-server-network
+
+volumes:
+  app-data:
+    name: sparks-authorization-server-app-data
+  db-data:
+    name: sparks-authorization-server-db-data
+
+networks:
+  authorization-server-network:
+    name: sparks-authorization-server-network
+    driver: bridge
