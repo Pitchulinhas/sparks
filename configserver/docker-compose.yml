@@ -1,0 +1,5 @@
+version: "3.9"
+
+include:
+  - ../common.docker-compose.yml
+  - ./config-server.docker-compose.yml

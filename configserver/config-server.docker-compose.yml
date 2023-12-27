@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: sparks-config-server-app
+    build:
+      context: .
+    image: sparks/config-server-app:latest
+    environment:
+      - PORT=${APP_PORT}
+      - REPOSITORY_URL=${APP_REPOSITORY_URL}
+      - DEFAULT_USER=${APP_DEFAULT_USER}
+      - DEFAULT_PASS=${APP_DEFAULT_PASS}
+    ports:
+      - ${APP_EXTERNAL_PORT}:${APP_PORT}
+    networks:
+      sparks-network:
+        aliases:
+          - config-server-app
