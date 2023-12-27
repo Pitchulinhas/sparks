@@ -52,8 +52,16 @@ Execute the command below to build the project:
 mvn clean package -DskipTests
 ```
 
-Navigate into _target_ folder and execute the command below to run the generated jar:
+To run locally, navigate into _target_ folder and execute the command below:
 
 ```shell
 java -jar configserver-0.0.1-SNAPSHOT.jar
 ```
+
+To run via Docker container, execute the command below in project root:
+
+```shell
+docker compose up -d
+```
+
+**PS:** You will need to create a **.env** (there is an example file named _.env.example_) file or define environment variables used in **docker-compose.yml**.

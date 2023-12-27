@@ -4,7 +4,6 @@ Message broker to comunication between services.
 
 ## Requirements
 
-- Build image **sparks/message-broker-server** from Dockerfile located in _server_ folder;
 - Create a **.env** (there is an example file named _.env.example_) file or create environment variables used in **docker-compose.yml**.
 
 ## Start

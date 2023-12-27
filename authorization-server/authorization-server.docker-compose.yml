@@ -1,8 +1,9 @@
 version: "3.9"
 
 services:
-  app:
+  authorization-server-app:
     container_name: sparks-authorization-server-app
+    build: app
     image: sparks/authorization-server-app:latest
     environment:
       - KEYCLOAK_ADMIN=${APP_ADMIN_USER}
@@ -15,35 +16,32 @@ services:
       - KC_HOSTNAME_PORT=${APP_EXTERNAL_PORT}
     command: start --optimized
     depends_on:
-      - db
+      - authorization-server-db
     volumes:
-      - app-data:/opt/keycloak/data/
+      - authorization-server-app-data:/opt/keycloak/data/
     ports:
       - ${APP_EXTERNAL_PORT}:8443
     networks:
-      sparks-network:
-        aliases:
-          - authorization-server-app
-      authorization-server-network:
-        aliases:
-          - app
-  db:
+      - sparks-network
+      - authorization-server-network
+  authorization-server-db:
     container_name: sparks-authorization-server-db
+    build: db
     image: sparks/authorization-server-db:latest
     environment:
       - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
       - APP_DB_NAME=${DB_APP_DB_NAME}
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - authorization-server-db-data:/var/lib/postgresql/data
     ports:
       - ${DB_EXTERNAL_PORT}:5432
     networks:
       - authorization-server-network
 
 volumes:
-  app-data:
+  authorization-server-app-data:
     name: sparks-authorization-server-app-data
-  db-data:
+  authorization-server-db-data:
     name: sparks-authorization-server-db-data
 
 networks:
