@@ -1,0 +1,14 @@
+server:
+  port: ${PORT}
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${REPOSITORY_URL}
+          clone-on-start: true
+  security:
+    user:
+      name: ${DEFAULT_USER}
+      password: ${DEFAULT_PASSWORD}
