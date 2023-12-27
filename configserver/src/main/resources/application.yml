@@ -10,5 +10,5 @@ spring:
           clone-on-start: true
   security:
     user:
-      name: ${DEFAULT_USER}
+      name: ${DEFAULT_USERNAME}
       password: ${DEFAULT_PASSWORD}
