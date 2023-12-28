@@ -5,3 +5,4 @@ include:
   - ./authorization-server/authorization-server.docker-compose.yml
   - ./message-broker/message-broker.docker-compose.yml
   - ./configserver/config-server.docker-compose.yml
+  - ./discoveryserver/discovery-server.docker-compose.yml
