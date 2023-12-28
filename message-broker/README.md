@@ -6,7 +6,40 @@ Message broker to comunication between services.
 
 - Create a **.env** (there is an example file named _.env.example_) file or create environment variables used in **docker-compose.yml**.
 
-## Start
+## Docker Image
+
+### Build
+
+Execute the command below to build an image from the Dockerfile:
+
+```bash
+docker build . -t sparks/message-broker:latest
+```
+
+### Start
+
+Execute the command below to start a container from the image created previously:
+
+```bash
+docker run -d --name sparks-message-broker \
+-e RABBITMQ_DEFAULT_USER=<ADMIN_USERNAME (ex: admin)> \
+-e RABBITMQ_DEFAULT_PASS=<ADMIN_PASSWORD (ex: admin)> \
+-p <BROKER_EXTERNAL_PORT (ex: 4101)>:5672 \
+-p <MANAGER_EXTERNAL_PORT (ex: 4102)>:15672 \
+sparks/message-broker
+```
+
+### Stop
+
+Execute the command below to stop the container:
+
+```bash
+docker stop sparks-message-broker
+```
+
+## Docker Compose
+
+### Start
 
 Execute the command below to start message broker:
 
@@ -14,7 +47,7 @@ Execute the command below to start message broker:
 docker-compose up -d
 ```
 
-## Stop
+### Stop
 
 Execute the command below to stop message broker:
 
