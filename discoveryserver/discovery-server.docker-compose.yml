@@ -1,13 +1,16 @@
 version: "3.9"
 
 services:
-  config-server:
+  discovery-server:
     container_name: sparks-discovery-server
     build: .
     image: sparks/discovery-server:latest
+    restart: on-failure
     environment:
       - PORT=${PORT}
       - CONFIG_SERVER_BASIC_AUTH_URL=${CONFIG_SERVER_BASIC_AUTH_URL}
+    depends_on:
+      - config-server
     ports:
       - ${EXTERNAL_PORT}:${PORT}
     networks:
