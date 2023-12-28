@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api-gateway:
+    container_name: sparks-api-gateway
+    build: .
+    image: sparks/api-gateway:latest
+    restart: on-failure
+    environment:
+      - PORT=${API_GATEWAY_PORT}
+      - CONFIG_SERVER_BASIC_AUTH_URL=${API_GATEWAY_CONFIG_SERVER_BASIC_AUTH_URL}
+      - DISCOVERY_SERVER_DEFAULT_ZONE_URL=${API_GATEWAY_DISCOVERY_SERVER_DEFAULT_ZONE_URL}
+    depends_on:
+      - config-server
+      - discovery-server
+    ports:
+      - ${API_GATEWAY_EXTERNAL_PORT}:${API_GATEWAY_PORT}
+    networks:
+      - sparks-network

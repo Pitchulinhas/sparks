@@ -1,0 +1,7 @@
+version: "3.9"
+
+include:
+  - ../common.docker-compose.yml
+  - ../configserver/config-server.docker-compose.yml
+  - ../discoveryserver/discovery-server.docker-compose.yml
+  - ./api-gateway.docker-compose.yml
