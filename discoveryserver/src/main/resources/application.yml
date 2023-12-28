@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: discovery-server
+  profiles:
+    active: development
+  config:
+    import: configserver:${CONFIG_SERVER_BASIC_AUTH_URL}

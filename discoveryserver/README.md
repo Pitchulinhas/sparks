@@ -1,6 +1,6 @@
-# Config Server
+# Discovery Server
 
-Sparks configuration server.
+Sparks discovery server.
 
 ## Configuration
 
@@ -13,10 +13,8 @@ Sparks configuration server.
 
 You will need to set the environment variables below:
 
-- PORT: Port to run the server (ex: 8888);
-- REPOSITORY_URL: URL of GIT repository that contains the configuration files;
-- DEFAULT_USER: Username of default user to access config server resources;
-- DEFAULT_PASS: Password of default user to access config server resources.
+- PORT: Port to run the server (ex: 8081);
+- CONFIG_SERVER_BASIC_AUTH_URL: URL of Config Server using Basic authorization (ex: http://username:password@localhost:8888).
 
 ### Dependencies
 
