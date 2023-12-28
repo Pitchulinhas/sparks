@@ -47,7 +47,7 @@ mvn clean spring-boot:run
 Execute the command below to build the project:
 
 ```shell
-mvn clean package -DskipTests
+mvn clean package -DskipTests -Dspring.profiles.active=production
 ```
 
 To run locally, navigate into _target_ folder and execute the command below:
