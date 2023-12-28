@@ -3,7 +3,7 @@ version: "3.9"
 services:
   message-broker:
     container_name: sparks-message-broker
-    build: server
+    build: .
     image: sparks/message-broker:latest
     environment:
       - RABBITMQ_DEFAULT_USER=${MESSAGE_BROKER_ADMIN_USER}
