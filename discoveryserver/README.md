@@ -47,13 +47,13 @@ mvn clean spring-boot:run
 Execute the command below to build the project:
 
 ```shell
-mvn clean package -DskipTests -Dspring.profiles.active=production
+mvn clean package -DskipTests
 ```
 
 To run locally, navigate into _target_ folder and execute the command below:
 
 ```shell
-java -jar configserver-0.0.1-SNAPSHOT.jar
+java -Dspring.profiles.active=production -jar configserver-0.0.1-SNAPSHOT.jar
 ```
 
 To run via Docker container, execute the command below in project root:
