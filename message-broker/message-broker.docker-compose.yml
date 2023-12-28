@@ -4,15 +4,15 @@ services:
   message-broker:
     container_name: sparks-message-broker
     build: server
-    image: sparks/message-broker-server:latest
+    image: sparks/message-broker:latest
     environment:
-      - RABBITMQ_DEFAULT_USER=${ADMIN_USER}
-      - RABBITMQ_DEFAULT_PASS=${ADMIN_PASS}
+      - RABBITMQ_DEFAULT_USER=${MESSAGE_BROKER_ADMIN_USER}
+      - RABBITMQ_DEFAULT_PASS=${MESSAGE_BROKER_ADMIN_PASS}
     volumes:
       - message-broker-data:/var/lib/rabbitmq
     ports:
-      - ${BROKER_EXTERNAL_PORT}:5672
-      - ${MANAGER_EXTERNAL_PORT}:15672
+      - ${MESSAGE_BROKER_BROKER_EXTERNAL_PORT}:5672
+      - ${MESSAGE_BROKER_MANAGER_EXTERNAL_PORT}:15672
     networks:
       - sparks-network
 
