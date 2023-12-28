@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  config-server:
+    container_name: sparks-discovery-server
+    build: .
+    image: sparks/discovery-server:latest
+    environment:
+      - PORT=${PORT}
+      - CONFIG_SERVER_BASIC_AUTH_URL=${CONFIG_SERVER_BASIC_AUTH_URL}
+    ports:
+      - ${EXTERNAL_PORT}:${PORT}
+    networks:
+      - sparks-network
