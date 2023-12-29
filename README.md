@@ -7,7 +7,9 @@ E-commerce application.
 - Meet **authorization-server** requirements;
 - Meet **message-broker** requirements.
 
-## Start
+## Docker Compose
+
+### Start
 
 Execute the command below to start sparks:
 
@@ -15,7 +17,7 @@ Execute the command below to start sparks:
 docker-compose up -d
 ```
 
-## Stop
+### Stop
 
 Execute the command below to stop sparks:
 

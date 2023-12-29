@@ -6,21 +6,21 @@ services:
     build: app
     image: sparks/authorization-server-app:latest
     environment:
-      - KEYCLOAK_ADMIN=${APP_ADMIN_USER}
-      - KEYCLOAK_ADMIN_PASSWORD=${APP_ADMIN_PASS}
-      - KC_DB=${APP_DB_TYPE}
-      - KC_DB_URL=${APP_DB_URL}
-      - KC_DB_USERNAME=${APP_DB_USER}
-      - KC_DB_PASSWORD=${APP_DB_PASS}
-      - KC_HOSTNAME=${APP_HOSTNAME}
-      - KC_HOSTNAME_PORT=${APP_EXTERNAL_PORT}
+      - KEYCLOAK_ADMIN=${AUTHORIZATION_SERVER_APP_ADMIN_USER}
+      - KEYCLOAK_ADMIN_PASSWORD=${AUTHORIZATION_SERVER_APP_ADMIN_PASS}
+      - KC_DB=${AUTHORIZATION_SERVER_APP_DB_TYPE}
+      - KC_DB_URL=${AUTHORIZATION_SERVER_APP_DB_URL}
+      - KC_DB_USERNAME=${AUTHORIZATION_SERVER_APP_DB_USER}
+      - KC_DB_PASSWORD=${AUTHORIZATION_SERVER_APP_DB_PASS}
+      - KC_HOSTNAME=${AUTHORIZATION_SERVER_APP_HOSTNAME}
+      - KC_HOSTNAME_PORT=${AUTHORIZATION_SERVER_APP_EXTERNAL_PORT}
     command: start --optimized
     depends_on:
       - authorization-server-db
     volumes:
       - authorization-server-app-data:/opt/keycloak/data/
     ports:
-      - ${APP_EXTERNAL_PORT}:8443
+      - ${AUTHORIZATION_SERVER_APP_EXTERNAL_PORT}:8443
     networks:
       - sparks-network
       - authorization-server-network
@@ -29,12 +29,12 @@ services:
     build: db
     image: sparks/authorization-server-db:latest
     environment:
-      - POSTGRES_PASSWORD=${DB_ADMIN_PASS}
-      - APP_DB_NAME=${DB_APP_DB_NAME}
+      - POSTGRES_PASSWORD=${AUTHORIZATION_SERVER_DB_ADMIN_PASS}
+      - APP_DB_NAME=${AUTHORIZATION_SERVER_DB_APP_DB_NAME}
     volumes:
       - authorization-server-db-data:/var/lib/postgresql/data
     ports:
-      - ${DB_EXTERNAL_PORT}:5432
+      - ${AUTHORIZATION_SERVER_DB_EXTERNAL_PORT}:5432
     networks:
       - authorization-server-network
 

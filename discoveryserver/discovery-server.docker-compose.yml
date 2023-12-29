@@ -7,11 +7,11 @@ services:
     image: sparks/discovery-server:latest
     restart: on-failure
     environment:
-      - PORT=${PORT}
-      - CONFIG_SERVER_BASIC_AUTH_URL=${CONFIG_SERVER_BASIC_AUTH_URL}
+      - PORT=${DISCOVERY_SERVER_PORT}
+      - CONFIG_SERVER_BASIC_AUTH_URL=${DISCOVERY_SERVER_CONFIG_SERVER_BASIC_AUTH_URL}
     depends_on:
       - config-server
     ports:
-      - ${EXTERNAL_PORT}:${PORT}
+      - ${DISCOVERY_SERVER_EXTERNAL_PORT}:${DISCOVERY_SERVER_PORT}
     networks:
       - sparks-network
