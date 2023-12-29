@@ -2,11 +2,13 @@
 
 Server to authenticate and authorizate users across the services.
 
-## Requirements
+## Docker Compose
 
-- Create a **.env** (there is an example file named _.env.example_) file or create environment variables used in **docker-compose.yml**.
+### Requirements
 
-## Start
+- Create a **.env** file (there is an example file named _.env.example_) or create environment variables used in **docker-compose.yml**.
+
+### Start
 
 Execute the command below to start authorization server:
 
@@ -14,7 +16,7 @@ Execute the command below to start authorization server:
 docker-compose up -d
 ```
 
-## Stop
+### Stop
 
 Execute the command below to stop authorization server:
 
